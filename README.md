@@ -1,7 +1,7 @@
-*(Note: If you like this, I think you will like my streamin management tool: [DeckyDecky](https://deckydecky.com), One tool to rule them all 😀 !)*
+*(Note: If you like this, I think you will like my streaming management tool: [DeckyDecky](https://deckydecky.com), One tool to rule them all 😀 !)*
 
-🇺🇸 For instructions in English: Stay here!
-🇫🇷 Pour des instructions en Francais : [c'est ici](https://github.com/Eskimon/twitch-connect4/blob/master/README.fr.md) !
+- 🇺🇸 For instructions in English: Stay here!
+- 🇫🇷 Pour des instructions en Francais : [c'est ici](https://github.com/Eskimon/twitch-connect4/blob/master/README.fr.md) !
 
 # Installation
 
