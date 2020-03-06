@@ -11,6 +11,7 @@ class GameManager {
       newgame: urlParams.get('newgame') || 10,
       playword: urlParams.get('playword') || '!play',
       resetword: urlParams.get('resetword') || '!reset',
+      lang: urlParams.get('lang') || 'en',
     }
 
     this.info_elmt = document.getElementById('info');
@@ -40,10 +41,10 @@ class GameManager {
     switch(this.state) {
       case 'init':
         if(!this.config.channel) {
-          this.consigne_elmt.innerHTML = `Aucun channel spécifié !`;
+          this.consigne_elmt.innerHTML = langs[this.config.lang].ERROR_NO_CHANNEL;
           return;
         }
-        this.consigne_elmt.innerHTML = `Connexion à ${this.config.channel}`;
+        this.consigne_elmt.innerHTML = langs[this.config.lang].CONNECTING_TO.templatize({'channel': this.config.channel});
         this.init();
         break;
       case 'reset':
@@ -73,11 +74,11 @@ class GameManager {
           if(this.timeout < 0) {
             clearInterval(this.interval_timer);
             setTimeout(() => {
-              this.consigne_elmt.innerHTML = 'Tirage au sort des joueurs en cours...';
+              this.consigne_elmt.innerHTML = langs[this.config.lang].STATE_DRAWING;
               this.update_FSM('pick_players');
             }, 1000);
           } else {
-            this.consigne_elmt.innerHTML = `Tapez <kbd>${this.config.playword}</kbd> pour jouer ! (${Math.floor(this.timeout)}s restantes)`
+            this.consigne_elmt.innerHTML = langs[this.config.lang].ORDER_INVITE_PLAY.templatize({'playword': this.config.playword, 'timeout': Math.floor(this.timeout)});
           }
         }, 250);
         break;
@@ -97,7 +98,7 @@ class GameManager {
               clearInterval(this.interval_timer);
               this.update_FSM('reset');
             } else {
-              this.consigne_elmt.innerHTML = `Pas assez de joueurs, on recommence dans ${Math.floor(this.timeout)} secondes!`;
+              this.consigne_elmt.innerHTML = langs[this.config.lang].INFO_NOT_ENOUGH_PLAYERS.templatize({'timeout': Math.floor(this.timeout)});
             }
           }, 250);
           return;
@@ -111,16 +112,16 @@ class GameManager {
         this.player1 = this.players_list[keys[rand1]];
         this.player2 = this.players_list[keys[rand2]];
         this.hideInfoBoxes();
-        this.info_elmt.innerHTML = `<strong class="player red">${this.player1.display}</strong> affronte <strong class="player yellow">${this.player2.display}</strong> !`;
+        this.info_elmt.innerHTML = langs[this.config.lang].SHOWMATCH.templatize({'player1': this.player1.display, 'player2': this.player2.display});
         this.current_player = this.player1;
         this.state = 'play';
         // No need to break, let's play!
 
       case 'play':
         if(this.current_player == this.player1)
-          this.consigne_elmt.innerHTML = `<strong class="player red">${this.player1.display}</strong> à toi de jouer !`;
+          this.consigne_elmt.innerHTML = langs[this.config.lang].RED_TURN.templatize({'player': this.current_player.display});
         else
-          this.consigne_elmt.innerHTML = `<strong class="player yellow">${this.player2.display}</strong> à toi de jouer !`;
+          this.consigne_elmt.innerHTML = langs[this.config.lang].YELLOW_TURN.templatize({'player': this.current_player.display});
         /*
         this.timeout = 20;
         let waitTime = this.timeout;
@@ -148,16 +149,17 @@ class GameManager {
 
       case 'player_1_won':
         this.info_elmt.innerHTML = `<h1 class="player red">${this.player1.display} à gagné !</h1>`;
+        this.info_elmt.innerHTML = langs[this.config.lang].RED_WON.templatize({'player': this.player1.display});
         this.update_FSM('new_game');
         break;
 
       case 'player_2_won':
-        this.info_elmt.innerHTML = `<h1 class="player yellow">${this.player2.display} à gagné !</h1>`;
+        this.info_elmt.innerHTML = langs[this.config.lang].YELLOW_WON.templatize({'player': this.player2.display});
         this.update_FSM('new_game');
         break;
 
       case 'no_one_won':
-        this.info_elmt.innerHTML = `<h1 class="player">Match nul !</h1>`;
+        this.info_elmt.innerHTML = langs[this.config.lang].NO_WINNER;
         this.update_FSM('new_game');
         break;
 
@@ -174,7 +176,7 @@ class GameManager {
               clearInterval(this.interval_timer);
               this.update_FSM('reset');
             } else {
-              this.consigne_elmt.innerHTML = `Une nouvelle partie démarre dans ${Math.floor(this.timeout)} secondes!`;
+              this.consigne_elmt.innerHTML = langs[this.config.lang].NEW_GAME_IN.templatize({'timeout': Math.floor(this.timeout)});
             }
           }, 250);
 

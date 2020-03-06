@@ -4,6 +4,8 @@
     <meta charset="utf-8"/>
     <title>Test puissance 4</title>
     <script src="tmi.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="localization.js"></script>
     <script src="game.js"></script>
     <script src="gamemanager.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -11,21 +13,21 @@
   <body>
     <header>
       <div id="info"></div>
-      <div id="consigne">
-        Connexion Twitch en cours...
-      </div>
+      <div id="consigne"></div>
     </header>
 
     <div class="main">
       <aside class="infobox">
-        <h3>Prochaine partie</h3>
+        <h3>Players</h3>
         <ul id="players-list">
         </ul>
       </aside>
       <div id="game"></div>
+      <!-- SOON
       <aside id="leaderboard" class="infobox">
         <h3>Leaderboard</h3>
       </aside>
+      -->
     </div>
 
     <script>

@@ -6,6 +6,11 @@ EZ. Copy-paste the following link to a "browser element" in your (Streamlabs-)OB
 
 And... it's done ! But read the following line to now how to connect it to your own channels :D
 
+When the game starts, viewers have time (see "Customization" below) to join the game.
+Then, the bot draw 2 names to come and play.
+During their turn, the player need to send the column number to play (1 to 7).
+And that's it!
+
 # Customization
 
 To configure the bot, you need to tweak the URL that you paste. The simplest is to juste update the channel (i.e. your twitch channel name) for the bot to know where to connect.
@@ -13,6 +18,7 @@ To do so, simply add a `channel` parameter to the URL like so: `https://eskimon.
 
 Here are the possible parameters:
 - `channel`: The name of the channel to connect to (**required**)
+- `lang`: Language for all the user messages (optional, default = `en`, availables are `en`, `fr`)
 - `invite`: The timeout for players to register to play (optional, default = `60s`)
 - `newgame`: The endgame timeout before a new game start (optional, default = `10`s)
 - `playword`: The keyword to register (optional, default = `!play`)
