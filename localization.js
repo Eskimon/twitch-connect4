@@ -4,6 +4,7 @@
   Thanks for your help to make this funny bot even more accessible to everyone.
   If you want to add a trad, simply copy a block and add a "key" for your language (like "fr" for french).
   Then, edit all the relevant strings but DO NOT change the first parameter, it is use to identify the string!
+  Information between brackets like "{player}" will be automagically replace during the game, so leave it between brackets!
 
   Have fun!
 */

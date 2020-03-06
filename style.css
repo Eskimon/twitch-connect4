@@ -15,7 +15,8 @@
   padding: 0px;
   border: 2px blue inset;
   border-radius: 2cm;
-  background-color: rgba(255, 255, 255, 0.9);
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  background-color: white;
 }
 
 #game td.player1 {
