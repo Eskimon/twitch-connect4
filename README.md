@@ -2,7 +2,7 @@
 
 # Installation
 
-EZ. Copy-paste the following link to a "browser element" in your (Streamlabs-)OBS: <https://eskimon.com/twitch-connect4?channel=your-channel-name> .
+EZ. Copy-paste the following link to a "browser element" in your (Streamlabs-)OBS: <https://eskimon.fr/twitch-connect4?channel=your-channel-name> .
 
 And... it's done ! But read the following line to now how to connect it to your own channels :D
 
@@ -14,7 +14,7 @@ And that's it!
 # Customization
 
 To configure the bot, you need to tweak the URL that you paste. The simplest is to juste update the channel (i.e. your twitch channel name) for the bot to know where to connect.
-To do so, simply add a `channel` parameter to the URL like so: `https://eskimon.com/twitch-connect4?channel=eskimon` (in that case, the bot connect to "eskimon" channel).
+To do so, simply add a `channel` parameter to the URL like so: `https://eskimon.fr/twitch-connect4?channel=eskimon` (in that case, the bot connect to "eskimon" channel).
 
 Here are the possible parameters:
 - `channel`: The name of the channel to connect to (**required**)
@@ -24,7 +24,7 @@ Here are the possible parameters:
 - `playword`: The keyword to register (optional, default = `!play`)
 - `resetword`: The keyword to force a game reset, see "Extra" (optional, default = `!reset`)
 
-For example, if you want the bot to be working on eskimon's chat, with an invite period of 2 minutes before the game start, a pause of 30s at the end of the game and the keyphrase *!iwannaplay* to try to join the next game write this: `https://eskimon.com/twitch-connect4?channel=eskimon&invite=120&newgame=30&playword=!iwannaplay` .
+For example, if you want the bot to be working on eskimon's chat, with an invite period of 2 minutes before the game start, a pause of 30s at the end of the game and the keyphrase *!iwannaplay* to try to join the next game write this: `https://eskimon.fr/twitch-connect4?channel=eskimon&invite=120&newgame=30&playword=!iwannaplay` .
 
 # Extra
 

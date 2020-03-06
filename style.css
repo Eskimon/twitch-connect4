@@ -15,7 +15,7 @@
   padding: 0px;
   border: 2px blue inset;
   border-radius: 2cm;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 #game td.player1 {
@@ -70,13 +70,13 @@ header {
 aside {
   padding: 10px;
   margin: 0 5px;
-  width: 20%;
+  width: 30%;
   border: solid 1px black;
   border-radius: 20px;
 }
 
 .game {
-  width: 60%;
+  width: 100%;
 }
 
 #info, #consigne {
