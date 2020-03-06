@@ -1,49 +1,38 @@
-/***
+class Connect4 {
 
-  Solution du TD http://defeo.lu/aws/tutorials/tutorial2
-  
- **/
-
-class Puissance4 {
-  /*
-    Intialise un plateau de jeu de dimensions `rows` × `cols` (par défaut 6×7),
-    et fait l'affichage dans l'élément `element_id` du DOM.
-   */
   constructor(element_id, rows=6, cols=7) {
-    // Nombre de lignes et de colonnes
     this.rows = rows;
     this.cols = cols;
-  	// cet tableau à deux dimensions contient l'état du jeu:
-    //   0: case vide
-    //   1: pion du joueur 1
-    //   2: pion du joueur 2
+  	// 2D Array for the game state:
+    //   0: empty
+    //   1: player 1
+    //   2: player 2
     this.board = Array(this.rows);
     for (let i = 0; i < this.rows; i++) {
       this.board[i] = Array(this.cols).fill(0);
     }
-    // un entier: 1 ou 2 (le numéro du prochain joueur)
+    // integer: 1 or 2 (player id)
     this.turn = 1;
-    // Nombre de coups joués
+    // How many moves were played
     this.moves = 0;
-    /* un entier indiquant le gagnant:
-        null: la partie continue
-           0: la partie est nulle
-           1: joueur 1 a gagné
-           2: joueur 2 a gagné
+    /*
+      Winner id
+        null: game is not over
+           0: Draw
+           1: Player 1 won
+           2: Player 2 won
     */
     this.winner = null;
 
-    // L'élément du DOM où se fait l'affichage
+    // DOM element where to display the grid
     this.element = document.querySelector(element_id);
-    // On fait l'affichage
+    // Render!
     this.render();
   }
-  
-  /* Affiche le plateau de jeu dans le DOM */
+
   render() {
     let table = document.createElement('table');
-    //ATTENTION, la page html est écrite de haut en bas. Les indices 
-    //pour le jeu vont de bas en haut (compteur i de la boucle)
+    // ATTENTION, HTML is written from top to bottom so careful!
     for (let i = this.rows - 1; i >= 0; i--) {
       let tr = table.appendChild(document.createElement('tr'));
       for (let j = 0; j < this.cols; j++) {
@@ -57,17 +46,16 @@ class Puissance4 {
     this.element.innerHTML = '';
     this.element.appendChild(table);
   }
-  
+
 	set(row, column, player) {
-    // On colore la case
+    // Let's make the cell the right color
 	  this.board[row][column] = player;
-    // On compte le coup
+    // And increment move counter
     this.moves++;
 	}
 
-  /* Cette fonction ajoute un pion dans une colonne */
 	play(column) {
-    // Trouver la première case libre dans la colonne
+    // Find the first available cell in the column
     let row;
     for (let i = 0; i < this.rows; i++) {
       if (this.board[i][column] == 0) {
@@ -78,15 +66,15 @@ class Puissance4 {
     if (row === undefined) {
       return null;
     } else {
-      // Effectuer le coup
+      // Play!
       this.set(row, column, this.turn);
-      // Renvoyer la ligne où on a joué
+      // Send back the row number
       return row;
     }
 	}
-  
+
   handle_play(column) {
-    // Vérifier si la partie est encore en cours
+    // Is the game still going on?
     if (this.winner !== null) {
   		if (window.confirm("Game over!\n\nDo you want to restart?")) {
   			this.reset();
@@ -97,35 +85,33 @@ class Puissance4 {
 
   	if (column !== undefined) {
      	let row = this.play(parseInt(column));
-      
+
       if (row === null) {
         // window.alert("Column is full!");
         return -1;
       } else {
-        // Vérifier s'il y a un gagnant, ou si la partie est finie
+        // Is it over?
         if (this.win(row, column, this.turn)) {
           this.winner = this.turn;
         } else if (this.moves >= this.rows * this.columns) {
           this.winner = 0;
         }
-        // Passer le tour : 3 - 2 = 1, 3 - 1 = 2
+        // Next player: 3 - 2 = 1, 3 - 1 = 2
         this.turn = 3 - this.turn;
 
-        // Mettre à jour l'affichage
+        // render!
         this.render()
-        
-        //Au cours de l'affichage, pensez eventuellement, à afficher un 
-        //message si la partie est finie...
+
         /*
         switch (this.winner) {
-          case 0: 
-            window.alert("Null game!!"); 
+          case 0:
+            window.alert("Null game!!");
             break;
           case 1:
-            window.alert("Player 1 wins"); 
+            window.alert("Player 1 wins");
             break;
           case 2:
-            window.alert("Player 2 wins"); 
+            window.alert("Player 2 wins");
             break;
         }
         */
@@ -134,13 +120,12 @@ class Puissance4 {
     }
   }
 
-  /* 
-   Cette fonction vérifie si le coup dans la case `row`, `column` par
-   le joueur `player` est un coup gagnant.
-   
-   Renvoie :
-     true  : si la partie est gagnée par le joueur `player`
-     false : si la partie continue
+  /*
+   Check if this is a winning move
+
+   Return:
+     true : Game is won by 'player'
+     false: Game must go on
  */
 	win(row, column, player) {
 		// Horizontal
@@ -170,11 +155,11 @@ class Puissance4 {
       count = (this.board[i][shift - i] == player) ? count+1 : 0;
       if (count >= 4) return true;
     }
-    
+
     return false;
 	}
 
-  // Cette fonction vide le plateau et remet à zéro l'état
+  // Reset the board
   reset() {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
