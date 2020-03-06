@@ -38,6 +38,10 @@ class GameManager {
     console.log('going to state ' + this.state);
     switch(this.state) {
       case 'init':
+        if(!this.config.channel) {
+          this.consigne_elmt.innerHTML = `Aucun channel spécifié !`;
+          return;
+        }
         this.consigne_elmt.innerHTML = `Connexion à ${this.config.channel}`;
         this.init();
         break;
