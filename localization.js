@@ -1,10 +1,21 @@
+/*
+  Dear translators,
+
+  Thanks for your help to make this funny bot even more accessible to everyone.
+  If you want to add a trad, simply copy a block and add a "key" for your language (like "fr" for french).
+  Then, edit all the relevant strings but DO NOT change the first parameter, it is use to identify the string!
+
+  Have fun!
+*/
+
 const langs = {
 
   'en': {
+    'ORDER_INVITE_PLAY': 'Type <kbd>{playword}</kbd> to join ! ({timeout}s remaining)',
+//  ^ DO NOT EDIT THAT^:  ^^^^^^^^^^^^^^^  EDIT THAT ;) ^^^^^^^^^^^^^^^
     'ERROR_NO_CHANNEL': `No channel specified`,
     'CONNECTING_TO': 'Connection to {channel}...',
     'STATE_DRAWING': 'Drawing the players...',
-    'ORDER_INVITE_PLAY': 'Type <kbd>{playword}</kbd> to join ! ({timeout}s remaining)',
     'INFO_NOT_ENOUGH_PLAYERS': 'Not enough players, starting over in {timeout} seconds!',
     'SHOWMATCH': '<strong class="player red">{player1}</strong> vs. <strong class="player yellow">{player2}</strong> !',
     'RED_TURN': '<strong class="player red">{player}</strong> its your turn!',
