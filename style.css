@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#game table {
+  border: 3px blue outset;
+  background-color: blue;
+}
+
+#game td {
+  width: 2cm;
+  height: 2cm;
+  margin: 0px;
+  padding: 0px;
+  border: 2px blue inset;
+  border-radius: 2cm;
+  background-color: white;
+}
+
+#game td.player1 {
+  background-color: red;
+}
+
+#game td.player2 {
+  background-color: yellow;
+}
+
+#players-list {
+  list-style: none;
+  margin-top: 5px;
+}
+
+.player {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.yellow {
+  color: yellow;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#game {
+  width: 100%;
+  text-align: center;
+}
+
+.main table {
+  display: inline-block;
+}
+
+header {
+  border: solid 1px black;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px 5px;
+}
+
+aside {
+  padding: 10px;
+  margin: 0 5px;
+  width: 20%;
+  border: solid 1px black;
+  border-radius: 20px;
+}
+
+.game {
+  width: 60%;
+}
+
+#info, #consigne {
+  text-align: center;
+}
+
+.hide {
+  visibility: hidden;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test puissance 4</title>
+    <script src="tmi.min.js"></script>
+    <script src="game.js"></script>
+    <script src="gamemanager.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header>
+      <div id="info"></div>
+      <div id="consigne">
+        Connexion Twitch en cours...
+      </div>
+    </header>
+
+    <div class="main">
+      <aside class="infobox">
+        <h3>Prochaine partie</h3>
+        <ul id="players-list">
+        </ul>
+      </aside>
+      <div id="game"></div>
+      <aside id="leaderboard" class="infobox">
+        <h3>Leaderboard</h3>
+      </aside>
+    </div>
+
+    <script>
+      var gm = new GameManager();
+    </script>
+  </body>
+</html>
