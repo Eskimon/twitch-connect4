@@ -3,13 +3,14 @@ class GameManager {
   constructor() {
     const urlParams = new URLSearchParams(window.location.search);
 
-    this.game = new Puissance4('#game');
+    this.game = new Connect4('#game');
     this.state = 'reset';
     this.config = {
       channel: urlParams.get('channel'),
       invite: urlParams.get('invite') || 60,
       newgame: urlParams.get('newgame') || 10,
       playword: urlParams.get('playword') || '!play',
+      resetword: urlParams.get('resetword') || '!reset',
     }
 
     this.info_elmt = document.getElementById('info');
@@ -296,7 +297,7 @@ class GameManager {
           'display': tags['display-name'],
           'id': tags['user-id'],
         })
-      } else if(message.startsWith('!reset')) {
+      } else if(message.startsWith(this.config.resetword)) {
         if((tags['mod'] === true) || tags['room-id'] === tags['user-id'])
           this.resetGame();
       } else {

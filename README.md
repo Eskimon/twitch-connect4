@@ -12,12 +12,17 @@ To configure the bot, you need to tweak the URL that you paste. The simplest is 
 To do so, simply add a `channel` parameter to the URL like so: `https://eskimon.com/twitch-connect4?channel=eskimon` (in that case, the bot connect to "eskimon" channel).
 
 Here are the possible parameters:
-- `channel`: The name of the channel to connect to (default = empty, required)
+- `channel`: The name of the channel to connect to (**required**)
 - `invite`: The timeout for players to register to play (optional, default = `60s`)
 - `newgame`: The endgame timeout before a new game start (optional, default = `10`s)
 - `playword`: The keyword to register (optional, default = `!play`)
+- `resetword`: The keyword to force a game reset, see "Extra" (optional, default = `!reset`)
 
 For example, if you want the bot to be working on eskimon's chat, with an invite period of 2 minutes before the game start, a pause of 30s at the end of the game and the keyphrase *!iwannaplay* to try to join the next game write this: `https://eskimon.com/twitch-connect4?channel=eskimon&invite=120&newgame=30&playword=!iwannaplay` .
+
+# Extra
+
+If the game is stuck (someone left and isn't playing anymore for example), the channel owner or a channel mod can type `!reset` to reset the game.
 
 # Contributing
 
