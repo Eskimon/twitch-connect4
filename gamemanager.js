@@ -222,12 +222,12 @@ class GameManager {
 
     if(this.game.winner !== null) {
       // We have a winner! (maybe)
-      if(this.game.winner === 1) {
+      if(this.game.winner === 2) {
         // Player 1 won
         console.log('Player 1 won');
         this.update_FSM('player_1_won');
       }
-      else if(this.game.winner === 2) {
+      else if(this.game.winner === 1) {
         // Player 2 won
         console.log('Player 2 won');
         this.update_FSM('player_2_won');
