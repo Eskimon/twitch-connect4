@@ -40,6 +40,9 @@ const langs = {
     'YELLOW_WON': '<h1 class="player yellow">{player} à gagné !</h1>',
     'NO_WINNER': '<h1 class="player">Match nul !</h1>',
     'NEW_GAME_IN': 'Une nouvelle partie démarre dans {timeout} secondes!',
+  },
+  'esp': {
+/* Spanish language will be soon available!*/
   }
 
 }
